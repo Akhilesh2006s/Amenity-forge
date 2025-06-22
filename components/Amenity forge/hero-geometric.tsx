@@ -21,16 +21,8 @@ function ElegantShape({
 }) {
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-        y: -150,
-        rotate: rotate - 15,
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-        rotate: rotate,
-      }}
+      initial={{ opacity: 0, y: -150, rotate: rotate - 15 }}
+      animate={{ opacity: 1, y: 0, rotate }}
       transition={{
         duration: 2.4,
         delay,
@@ -40,18 +32,9 @@ function ElegantShape({
       className={cn("absolute", className)}
     >
       <motion.div
-        animate={{
-          y: [0, 15, 0],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-        style={{
-          width,
-          height,
-        }}
+        animate={{ y: [0, 15, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        style={{ width, height }}
         className="relative"
       >
         <div
@@ -85,70 +68,32 @@ export default function HeroGeometric() {
   }
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+    <div className="relative min-h-screen w-full overflow-hidden bg-black">
+      {/* Gold background blur */}
       <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/[0.03] via-transparent to-yellow-600/[0.03] blur-3xl" />
 
+      {/* Floating elegant shapes */}
       <div className="absolute inset-0 overflow-hidden">
-        <ElegantShape
-          delay={0.3}
-          width={600}
-          height={140}
-          rotate={12}
-          gradient="from-yellow-300/[0.15] via-yellow-500/[0.12] to-yellow-600/[0.10]"
-          className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
-        />
-
-        <ElegantShape
-          delay={0.5}
-          width={500}
-          height={120}
-          rotate={-15}
-          gradient="from-yellow-300/[0.15] via-yellow-500/[0.12] to-yellow-600/[0.10]"
-          className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
-        />
-
-        <ElegantShape
-          delay={0.4}
-          width={300}
-          height={80}
-          rotate={-8}
-          gradient="from-yellow-300/[0.15] via-yellow-500/[0.12] to-yellow-600/[0.10]"
-          className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
-        />
-
-        <ElegantShape
-          delay={0.6}
-          width={200}
-          height={60}
-          rotate={20}
-          gradient="from-yellow-300/[0.15] via-yellow-500/[0.12] to-yellow-600/[0.10]"
-          className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]"
-        />
-
-        <ElegantShape
-          delay={0.7}
-          width={150}
-          height={40}
-          rotate={-25}
-          gradient="from-yellow-300/[0.15] via-yellow-500/[0.12] to-yellow-600/[0.10]"
-          className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]"
-        />
+        <ElegantShape delay={0.3} width={600} height={140} rotate={12} gradient="from-yellow-300/[0.15] via-yellow-500/[0.12] to-yellow-600/[0.10]" className="left-[-10%] md:left-[-5%] top-[15%]" />
+        <ElegantShape delay={0.5} width={500} height={120} rotate={-15} gradient="from-yellow-300/[0.15] via-yellow-500/[0.12] to-yellow-600/[0.10]" className="right-[-5%] md:right-[0%] top-[70%]" />
+        <ElegantShape delay={0.4} width={300} height={80} rotate={-8} gradient="from-yellow-300/[0.15] via-yellow-500/[0.12] to-yellow-600/[0.10]" className="left-[5%] md:left-[10%] bottom-[5%]" />
+        <ElegantShape delay={0.6} width={200} height={60} rotate={20} gradient="from-yellow-300/[0.15] via-yellow-500/[0.12] to-yellow-600/[0.10]" className="right-[15%] md:right-[20%] top-[10%]" />
+        <ElegantShape delay={0.7} width={150} height={40} rotate={-25} gradient="from-yellow-300/[0.15] via-yellow-500/[0.12] to-yellow-600/[0.10]" className="left-[20%] md:left-[25%] top-[5%]" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div
-            custom={0}
-            variants={fadeUpVariants}
-            initial="hidden"
-            animate="visible"
-            className="flex justify-center"
-          >
-            <Image src="Logo.jpg" alt="Logo" width={480} height={500} />
-          </motion.div>
-        </div>
+      {/* Logo positioned at the very top center */}
+      <div className="absolute top-0 w-full flex justify-center z-10">
+        <motion.div
+          custom={0}
+          variants={fadeUpVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <Image src="/Logo.jpg" alt="Logo" width={180} height={100} />
+        </motion.div>
       </div>
 
+      {/* Bottom overlay gradient for visual fade */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/80 pointer-events-none" />
     </div>
   )
