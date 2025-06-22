@@ -89,7 +89,7 @@ export default function HeroGeometric() {
           initial="hidden"
           animate="visible"
         >
-          <Image src="/Logo.jpg" alt="Logo" width={280} height={200} />
+          <Image src="/Logo.jpg" alt="Logo" width={180} height={100} />
         </motion.div>
       </div>
 
