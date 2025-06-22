@@ -1,4 +1,3 @@
-// components/GoldRevealCanvas.tsx
 "use client"
 
 import React, { useRef, useEffect } from "react"
@@ -30,11 +29,21 @@ const GoldRevealCanvas: React.FC<GoldRevealCanvasProps> = ({
     resizeCanvas()
     window.addEventListener("resize", resizeCanvas)
 
-    const goldShades = ["#FFD700", "#F8E45C", "#CFAE00", "#FFE066", "#FFEB3B"]
+    const goldShades = [
+      "#FFD700", // pure gold
+      "#F8E45C", // soft yellow gold
+      "#CFAE00", // deep rich gold
+      "#FFE066", // pastel gold
+      "#FFEB3B", // bright gold
+    ]
 
     const draw = () => {
       if (!ctx) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      // Set background to black to avoid transparency showing violet
+      ctx.fillStyle = "#000000"
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       for (let y = 0; y < canvas.height; y += spacing) {
         for (let x = 0; x < canvas.width; x += spacing) {
@@ -59,7 +68,7 @@ const GoldRevealCanvas: React.FC<GoldRevealCanvasProps> = ({
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+      className="absolute inset-0 w-full h-full z-0 pointer-events-none bg-black"
     />
   )
 }
